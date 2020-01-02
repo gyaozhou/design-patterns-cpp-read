@@ -11,10 +11,15 @@ void Observer::SetNotifier(Notifier *notifier) {
   notifier_ = notifier;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+
+
+// zhou: register
 void Notifier::Attach(Observer * observer) {
   observers_.push_back(observer);
 }
 
+// zhou: deregister
 void Notifier::Detach(Observer * observer) {
   for(std::vector <Observer*> ::iterator it = observers_.begin(); it != observers_.end(); ++it) {
     if(*it == observer) {
@@ -23,6 +28,7 @@ void Notifier::Detach(Observer * observer) {
     }
   }
 }
+
 
 void Notifier::SetState(std::string state) {
   state_ = state;
